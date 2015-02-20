@@ -11,7 +11,7 @@
 
   Optional:
   $table->setGlobalDelimiter("This delimiter will be applied globaly"); // Delimiter applied in function call will not be ignored
-  %table->setOutput("direct" or "return"); // Default: direct (output using echo). $container[int]
+  %table->setOutput("direct" or "variable"); // Default: direct (output using echo). $container[int]
  */
 
 class tablesman {
