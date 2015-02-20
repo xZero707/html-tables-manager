@@ -11,10 +11,10 @@ Take a look at example.php file, and on tablesman.class.php file as well.
 For initialization of class you must have a look in example.php file.
 
 Basic use:
-  $table->create("test", "class", "border='0'");
-  $table->header("Foo | Bar | Just a test", "|");    
-  $table->row("column #1 |column #2| column #3", "|"); 
-  $table->close(); 
+$table->create("test", "class", "border='0'");
+$table->header("Foo | Bar | Just a test", "|");
+$table->row("column #1 |column #2| column #3", "|");
+$table->close(); 
   
   Also you can set global delimiter so:
   
