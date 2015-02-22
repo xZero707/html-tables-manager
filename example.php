@@ -9,9 +9,9 @@ $table->setGlobalDelimiter("|");
 $table->setOutput("variable"); // Direct or variable output. Direct will echo putput while variable saves it into output buffer-variable
 // Create table
 $table->create("test", "class");
-$table->header("head|head|head");
-$table->row("foo|bar|3");
-$table->footer("foot|foot|foot");
+$table->header("head #1|head #2|head #3");
+$table->row("foo|bar|row #3");
+$table->footer("foot #1|foot #2|foot #3");
 $table->close();
 
 
