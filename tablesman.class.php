@@ -1,17 +1,10 @@
 <?PHP
 
-/* Tables Manager v1.0.4.23 by xZero | This version in not backward compatible with older versions.
+/*        Tables Manager v1.0.4.23
   ~ Made for easier manipulation with messy html tables
- * 
-  Usage:
-  $table->create("table_name", "class", "border='3'");   // It will create HTML table with name table_name and class as identifier. Also border is set to 3 <- in that parameter you can add any table additional code.
-  $table->header("Foo | Bar", "|");                      // create table headers Foo and Bar
-  $table->row("column #1 |column #2| column #3", "|");   // Create table rows, there is no limit
-  $table->close();                                       // Close table
-
-  Optional:
-  $table->setGlobalDelimiter("This delimiter will be applied globaly"); // Delimiter applied in function call will not be ignored
-  %table->setOutput("direct" or "variable"); // Default: direct (output using echo). $container[int]
+  ~ License: Open source
+  ~ Author: xZero
+  ~ Website: https://www.elite7hackers.net/
  */
 
 class tablesman {
