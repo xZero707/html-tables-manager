@@ -17,6 +17,8 @@ class tablesman {
     protected $linesArr = array();
     public $output = array();
     public $isNewInst = true;
+    protected $tableOpt = array();
+    protected $EOL = PHP_EOL;
 
     function __construct()
     {
@@ -26,24 +28,60 @@ class tablesman {
     public function setGeneratedBy($val)
     {
         if ($val) {
-            $this->generator = PHP_EOL . "<!-- {$val} -->" . PHP_EOL;
+            $this->generator = $this->EOL . "<!-- {$val} -->" . $this->EOL;
         } else {
             $this->generator = '';
         }
     }
 
-    public function setDirectOutput($bool)
+    public function setOptions($opt)
     {
-        if (is_bool($bool)) {
-            $this->outputDirect = $bool;
-            return true;
+        if (is_array($opt)) {
+            $this->tableOpt = $opt;
         }
         return false;
     }
 
-    public function create($tablename, $identifier = 'class', $code = NULL)
+    public function setOption($opt, $val, $check = false)
     {
-        $this->FlushOutput("{$this->generator}<table {$identifier}='{$tablename}' {$code}>\n");
+        if (!isset($this->tableOpt[$opt])) {
+            $this->tableOpt[$opt] = $val;
+        } else if ($this->tableOpt[$opt] !== $val && !$check) {
+            $this->tableOpt[$opt] = $val;
+        }
+    }
+
+    private function checkOpt($opt)
+    {
+        return ((isset($this->tableOpt[$opt])) ? true : false);
+    }
+
+    private function readOpt($opt)
+    {
+        return ((isset($this->tableOpt[$opt])) ? $this->tableOpt[$opt] : '');
+    }
+
+    private function NewLineOpt()
+    {
+        if ($this->readOpt("NEW_LINE") === false) {
+            $this->EOL = '';
+        }
+    }
+
+    public function create()
+    {
+        $identifier = '';
+        if ($this->checkOpt('class') || $this->checkOpt('id')) {
+            if ($this->checkOpt('class')) {
+                $identifier .= " class='" . $this->readOpt("class") . "'";
+            }
+            if ($this->checkOpt("id")) {
+                $identifier .= " id='" . $this->readOpt("id") . "'";
+            }
+        }
+        $code = (($this->checkOpt('CODE')) ? ' ' . $this->readOpt('CODE') : '');
+        $this->NewLineOpt();
+        $this->FlushOutput("{$this->generator}<table{$identifier}{$code}>" . $this->EOL);
     }
 
     public function header($headers, $code = NULL)
@@ -51,11 +89,11 @@ class tablesman {
         if (!is_array($headers)) {
             return false;
         }
-        $this->linesArr[] = "<tr$code>";
+        $this->linesArr[] = "<tr{$code}>";
         foreach ($headers as $header) {
-            $this->linesArr[] = "<th>$header</th>";
+            $this->linesArr[] = "<th>{$header}</th>";
         }
-        $this->linesArr[] = "</tr>";
+        $this->linesArr[] = "</tr>" . $this->EOL;
         $this->FlushOutput(implode("\n", $this->linesArr));
     }
 
@@ -68,8 +106,8 @@ class tablesman {
         foreach ($columns as $column) {
             $this->linesArr[] = "<td>$column</td>";
         }
-        $this->linesArr[] = "</tr>";
-        $this->FlushOutput(implode("\n", $this->linesArr));
+        $this->linesArr[] = "</tr>" . $this->EOL;
+        $this->FlushOutput(implode($this->EOL, $this->linesArr));
     }
 
     public function footer($columns, $code = NULL)
@@ -78,29 +116,34 @@ class tablesman {
             return false;
         }
 
-        $this->linesArr[] = "<tfoot>\n<tr $code>";
+        $this->linesArr[] = "<tfoot>{$this->EOL}<tr $code>";
         foreach ($columns as $column) {
             $this->linesArr[] = "<td>$column</td>";
         }
-        $this->linesArr[] = "</tr>\n</tfoot>";
-        $this->FlushOutput(implode("\n", $this->linesArr));
+        $this->linesArr[] = "</tr>{$this->EOL}</tfoot>";
+        $this->FlushOutput(implode($this->EOL, $this->linesArr));
     }
 
     public function close()
     {
-        $this->FlushOutput("</table>{$this->generator}");
+        $this->FlushOutput($this->EOL . "</table>{$this->generator}");
         $this->isNewInst = true;
+        $this->linesArr = array();
     }
 
     private function FlushOutput($out)
     {
-        if (!$this->outputDirect) {
+        if (!$this->readOpt('DIRECT') === true) {
             if ($this->isNewInst) {
                 $this->output = array(); // Reset output buffer if run in new instance
                 $this->isNewInst = false; // Set to false so there will be no more buffer resets until new instance
+                $this->EOL = PHP_EOL;
+                $this->tableOpt = array();
             }
+            $this->linesArr = array();
             $this->output[] = $out;
         } else {
+            $this->linesArr = array();
             echo $out;
         }
     }
