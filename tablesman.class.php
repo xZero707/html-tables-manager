@@ -1,10 +1,12 @@
 <?PHP
 
-/*        Tables Manager v1.0.4.23
-  ~ Made for easier manipulation with messy html tables
-  ~ License: Open source
-  ~ Author: xZero
-  ~ Website: https://www.elite7hackers.net/
+/**
+ *  ~ Tables Manager v1.0.4.29 ~
+ * Made for easier manipulation with messy HTML tables
+ * 
+ * @license https://github.com/xZero707/PHP-Tables-Manager/blob/master/LICENSE <Apache License version 2.0>
+ * @author xZero707 <https://github.com/xZero707/>
+ * @website https://www.elite7hackers.net/
  */
 
 class tablesman {
