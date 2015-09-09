@@ -26,7 +26,7 @@ class tablesman {
     public function setGeneratedBy($val)
     {
         if ($val) {
-            $this->generator = "<!-- {$val} -->\n";
+            $this->generator = PHP_EOL . "<!-- {$val} -->" . PHP_EOL;
         } else {
             $this->generator = '';
         }
@@ -43,15 +43,13 @@ class tablesman {
 
     public function create($tablename, $identifier = 'class', $code = NULL)
     {
-        $this->FlushOutput("\n{$this->generator}<table {$identifier}='{$tablename}' {$code}>\n");
+        $this->FlushOutput("{$this->generator}<table {$identifier}='{$tablename}' {$code}>\n");
     }
 
-    public function header($input, $code = NULL)
+    public function header($headers, $code = NULL)
     {
-        if (!is_array($input)) {
+        if (!is_array($headers)) {
             return false;
-        } else {
-            $headers = $input;
         }
         $this->linesArr[] = "<tr$code>";
         foreach ($headers as $header) {
@@ -61,12 +59,10 @@ class tablesman {
         $this->FlushOutput(implode("\n", $this->linesArr));
     }
 
-    public function row($input, $code = NULL)
+    public function row($columns, $code = NULL)
     {
-        if (!is_array($input)) {
+        if (!is_array($columns)) {
             return false;
-        } else {
-            $columns = $input;
         }
         $this->linesArr[] = " <tr$code>";
         foreach ($columns as $column) {
@@ -76,16 +72,14 @@ class tablesman {
         $this->FlushOutput(implode("\n", $this->linesArr));
     }
 
-    public function footer($input, $code = NULL)
+    public function footer($columns, $code = NULL)
     {
-        if (!is_array($input)) {
+        if (!is_array($columns)) {
             return false;
-        } else {
-            $tfoot = $input;
         }
+
         $this->linesArr[] = "<tfoot>\n<tr $code>";
-        /* @var $tfoot type */
-        foreach ($tfoot as $column) {
+        foreach ($columns as $column) {
             $this->linesArr[] = "<td>$column</td>";
         }
         $this->linesArr[] = "</tr>\n</tfoot>";
@@ -94,7 +88,7 @@ class tablesman {
 
     public function close()
     {
-        $this->FlushOutput("</table>\n{$this->generator}\n");
+        $this->FlushOutput("</table>{$this->generator}");
         $this->isNewInst = true;
     }
 
@@ -110,6 +104,7 @@ class tablesman {
             echo $out;
         }
     }
+
 }
 
 if (defined("TBM_INIT")) {
