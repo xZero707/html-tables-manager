@@ -4,6 +4,8 @@
  *  ~ Tables Manager v1.0.4.29 ~
  * Made for easier manipulation with messy HTML tables
  * 
+ * @version 1.0.4.29
+ * @since 1.0.4.29 Not backwards compatible
  * @license https://github.com/xZero707/PHP-Tables-Manager/blob/master/LICENSE <Apache License version 2.0>
  * @author xZero707 <https://github.com/xZero707/>
  * @website https://www.elite7hackers.net/
@@ -74,7 +76,7 @@ class tablesman {
         $this->FlushOutput(implode("\n", $this->linesArr));
     }
 
-    public function footer($input, $dlm = '*', $code = NULL)
+    public function footer($input, $code = NULL)
     {
         if (!is_array($input)) {
             return false;
@@ -98,26 +100,16 @@ class tablesman {
 
     private function FlushOutput($out)
     {
-        $this->linesArr = array(); // Clean array
-        switch ($this->outputTyp) {
-            case "direct":
-                echo $out;
-                break;
-
-            case "array":
-                if ($this->isNewInst) {
-                    $this->output = array(); // Reset output buffer if run in new instance
-                    $this->isNewInst = false; // Set to false so there will be no more buffer resets until new instance
-                }
-                $this->output[] = $out;
-                break;
-
-            default:
-                echo $out;
-                break;
+        if (!$this->outputDirect) {
+            if ($this->isNewInst) {
+                $this->output = array(); // Reset output buffer if run in new instance
+                $this->isNewInst = false; // Set to false so there will be no more buffer resets until new instance
+            }
+            $this->output[] = $out;
+        } else {
+            echo $out;
         }
     }
-
 }
 
 if (defined("TBM_INIT")) {
