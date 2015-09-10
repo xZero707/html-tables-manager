@@ -51,6 +51,11 @@ class tablesman {
         }
     }
 
+    public function setOpt($opt, $val, $check = false)
+    {
+        $this->setOption($opt, $val, $check);
+    }
+
     private function checkOpt($opt)
     {
         return ((isset($this->tableOpt[$opt])) ? true : false);
