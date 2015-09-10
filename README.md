@@ -13,19 +13,19 @@ Take a look at example.php file, and on tablesman.class.php file as well.
 For initialization of class you must have a look in example.php file.
 
 Basic use:
-$table->setOption('class', 'example_table');
-$table->setOption('CODE', "border='1'");
-$table->create();
-$table->header(array("Header #1", "Header #2", "Header #3"));
-$table->row(array("Foo", "Bar", "Foobar"));
-$table->row(array("Foo #2", "Bar #2", "Foobar #2"));
-$table->footer(array("", "Foobar", ""));
-$table->close();
+$table->setOption('class', 'example_table');<br/>
+$table->setOption('CODE', "border='1'");<br/>
+$table->create();<br/>
+$table->header(array("Header #1", "Header #2", "Header #3"));<br/>
+$table->row(array("Foo", "Bar", "Foobar"));<br/>
+$table->row(array("Foo #2", "Bar #2", "Foobar #2"));<br/>
+$table->footer(array("", "Foobar", ""));<br/>
+$table->close();<br/>
 
-echo implode("", $table->output); // Finaly flush output
-
-For more details and examples, check out example.php
-
+echo implode("", $table->output); // Finaly flush output<br/>
+<br/>
+For more details and examples, check out [example.php](https://github.com/xZero707/PHP-Tables-Manager/blob/master/example.php)<br/>
+<br/>
 
 **LICENSE AGREEMENT**
 
