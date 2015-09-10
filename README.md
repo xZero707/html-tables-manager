@@ -15,6 +15,7 @@ For initialization of class you must have a look in example.php file.
 Basic use:
 ```php
 $table->setOption('class', 'example_table');
+$table->setOption('id', 'example_table');
 $table->setOption('CODE', "border='1'");
 $table->create();
 $table->header(array("Header #1", "Header #2", "Header #3"));
