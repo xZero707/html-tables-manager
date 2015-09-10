@@ -9,10 +9,8 @@ PHP Class which makes this process simple and straight forward.
 
 
 # Usage
-Take a look at example.php file, and on tablesman.class.php file as well.
-For initialization of class you must have a look in example.php file.
 
-Basic use:
+Basic use (assuming class is loaded and initialized):
 ```php
 $table->setOption('class', 'example_table');
 $table->setOption('id', 'example_table');
