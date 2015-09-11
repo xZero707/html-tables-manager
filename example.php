@@ -11,6 +11,7 @@ $table->setOption("DIRECT", false); // We want to output table code right away w
 // Set id and class to our table
 $table->setOption("class", "example_table");
 $table->setOption("id", "example_table");
+$table->setOption("CODE", "border='1'");
 
 
 /* or all options in one array:
