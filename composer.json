@@ -1,0 +1,9 @@
+{
+    "name": "xZero707/HTML-Tables-Manager",
+    "version": "master",
+    "type": "php-class",
+    "dist": {
+        "url": "git@github.com:xZero707/HTML-Tables-Manager.git",
+        "type": "git"
+    }
+}
