@@ -7,6 +7,12 @@ Do you hate HTML tables like I do?
 Too much complications and code for such a small thing! So I come with idea and solution.
 PHP Class which makes this process simple and straight forward.
 
+# Installation
+```
+composer require xzero707/html-tables-manager
+```
+or
+clone repo and include tablesman.class.php
 
 # Usage
 
