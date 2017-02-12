@@ -14,13 +14,13 @@
     
     "repositories": [
         {
-            "url": "https://github.com/l3pp4rd/DoctrineExtensions.git",
+            "url": "https://github.com/xZero707/HTML-Tables-Manager.git",
             "type": "git"
         }
     ],
     "require": {
         "php": ">=5.3",
-        "xZero707/HTML-Tables-Manager": "~1.3"
+        "xZero707/HTML-Tables-Manager": "~2.1"
     }
 }
 
