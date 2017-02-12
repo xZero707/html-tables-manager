@@ -1,0 +1,27 @@
+{
+    "name": "xZero707/HTML-Tables-Manager",
+    "description": "[PHP] HTML Tables manager (Tablesman library) - Create and customize HTML tables",
+    "homepage": "https://github.com/xZero707/HTML-Tables-Manager",
+    "license": "Unlicense",
+    "keywords": [
+        "php", "html", "tables", "manager", "wrapper", "framework", "xml"
+    ],
+    "authors": [
+        {
+            "name": "Aleksandar Puharic"
+        }
+    ],
+    
+    "repositories": [
+        {
+            "url": "https://github.com/l3pp4rd/DoctrineExtensions.git",
+            "type": "git"
+        }
+    ],
+    "require": {
+        "php": ">=5.3",
+        "xZero707/HTML-Tables-Manager": "~1.3"
+    }
+}
+
+
