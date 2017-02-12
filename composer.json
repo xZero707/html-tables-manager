@@ -1,0 +1,19 @@
+{
+	"name": "xZero707/HTML-Tables-Manager",
+	"description": "[PHP] HTML Tables manager (Tablesman library) - Create and customize HTML tables",
+	"license": "Apache-2.0",
+    "authors": [
+        {
+            "name": "Aleksandar Puharic",
+            "email": "xzero@elite7hackers.net",
+            "homepage": "https://github.com/xZero707",
+            "role": "Developer"
+        }
+    ],
+	"require": {
+		"php": ">=5.3.0"
+	},
+	"autoload": {
+		"files": ["tablesman.class.php"]
+	}
+}
