@@ -1,6 +1,8 @@
 # PHP-Tables-Manager
 [PHP] HTML Tables manager (Tablesman)
 
+This project is abandoned in favor of: [donquixote/cellbrush](https://github.com/donquixote/cellbrush)
+
 --
 
 Do you hate HTML tables like I do? 
